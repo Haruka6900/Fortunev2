@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: fortune-bot-dashboard
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run interface/dashboard.py --server.port=$PORT --server.address=0.0.0.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+    
+  - type: worker
+    name: fortune-bot-engine
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0

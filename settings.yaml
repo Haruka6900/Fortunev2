@@ -1,0 +1,47 @@
+# Configuration du Fortune Bot
+
+trading:
+  mode: paper  # paper ou live
+  base_currency: USDT
+  max_positions: 5
+  default_risk_per_trade: 0.02  # 2% du capital par trade
+  min_trade_amount: 10
+  max_trade_amount: 1000
+
+api:
+  exchange: binance
+  testnet: true
+  api_key: ""  # À remplir pour le mode live
+  api_secret: ""  # À remplir pour le mode live
+
+strategies:
+  enabled:
+    - rsi
+    - macd
+    - grid
+    - dca
+  auto_tune: true
+  backtest_period: 30  # jours
+
+risk_management:
+  max_drawdown: 0.15  # 15%
+  daily_loss_limit: 0.05  # 5%
+  position_sizing: kelly  # fixed, percentage, kelly, volatility
+  stop_loss_pct: 0.02  # 2%
+  take_profit_pct: 0.04  # 4%
+
+dashboard:
+  port: 8501
+  auto_refresh: 5  # secondes
+
+symbols:
+  - BTCUSDT
+  - ETHUSDT
+  - ADAUSDT
+  - DOTUSDT
+  - LINKUSDT
+
+logging:
+  level: INFO
+  max_file_size: 10MB
+  backup_count: 5

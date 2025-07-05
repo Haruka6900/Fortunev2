@@ -1,0 +1,21 @@
+{
+  "trades": [],
+  "market_states": [],
+  "strategy_params": {
+    "rsi": {
+      "rsi_period": 14,
+      "oversold_threshold": 30,
+      "overbought_threshold": 70
+    },
+    "macd": {
+      "fast_period": 12,
+      "slow_period": 26,
+      "signal_period": 9
+    }
+  },
+  "performance_metrics": {},
+  "learned_patterns": {},
+  "risk_adjustments": {},
+  "session_stats": {},
+  "last_updated": "2024-01-01T00:00:00"
+}
