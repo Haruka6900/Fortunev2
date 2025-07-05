@@ -1,7 +1,7 @@
 # Configuration du Fortune Bot
 
 trading:
-  mode: paper  # paper ou live
+  mode: paper  # CHANGEZ À "live" pour le trading réel
   base_currency: USDT
   max_positions: 5
   default_risk_per_trade: 0.02  # 2% du capital par trade
@@ -9,10 +9,18 @@ trading:
   max_trade_amount: 1000
 
 api:
-  exchange: binance
-  testnet: true
-  api_key: ""  # À remplir pour le mode live
-  api_secret: ""  # À remplir pour le mode live
+  exchange: binance  # binance, coinbase, kraken, etc.
+  testnet: true  # CHANGEZ À false pour l'API de production
+  
+  # 🔑 BINANCE API KEYS - À REMPLIR
+  api_key: "YOUR_BINANCE_API_KEY_HERE"
+  api_secret: "YOUR_BINANCE_SECRET_KEY_HERE"
+  
+  # 🔑 AUTRES EXCHANGES (optionnel)
+  # coinbase_api_key: "YOUR_COINBASE_API_KEY"
+  # coinbase_api_secret: "YOUR_COINBASE_SECRET"
+  # kraken_api_key: "YOUR_KRAKEN_API_KEY"
+  # kraken_api_secret: "YOUR_KRAKEN_SECRET"
 
 strategies:
   enabled:
@@ -24,24 +32,34 @@ strategies:
   backtest_period: 30  # jours
 
 risk_management:
-  max_drawdown: 0.15  # 15%
-  daily_loss_limit: 0.05  # 5%
+  max_drawdown: 0.15  # 15% maximum de perte
+  daily_loss_limit: 0.05  # 5% de perte par jour maximum
   position_sizing: kelly  # fixed, percentage, kelly, volatility
-  stop_loss_pct: 0.02  # 2%
-  take_profit_pct: 0.04  # 4%
+  stop_loss_pct: 0.02  # 2% stop loss
+  take_profit_pct: 0.04  # 4% take profit
 
 dashboard:
   port: 8501
   auto_refresh: 5  # secondes
 
+# 📊 SYMBOLES À TRADER
 symbols:
   - BTCUSDT
   - ETHUSDT
   - ADAUSDT
   - DOTUSDT
   - LINKUSDT
+  - BNBUSDT
+  - SOLUSDT
+  - XRPUSDT
 
 logging:
   level: INFO
   max_file_size: 10MB
   backup_count: 5
+
+# 🚀 DÉPLOIEMENT (pour Render/Heroku)
+deployment:
+  environment: production  # development, staging, production
+  auto_restart: true
+  health_check_interval: 60  # secondes
